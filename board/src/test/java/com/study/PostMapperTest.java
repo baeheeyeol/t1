@@ -27,7 +27,7 @@ public class PostMapperTest {
         params.setNoticeYn(false);
         postMapper.save(params);
 
-        List<PostResponse> posts = postMapper.findAll();
+        List<PostResponse> posts = postMapper.findAll(null);
         System.out.println("전체 게시글 개수는 : " + posts.size() + "개입니다.");
     }
     @Test
@@ -68,4 +68,38 @@ public class PostMapperTest {
         postMapper.deleteById(10L);
         System.out.println("삭제 이후의 전체 게시글 개수는 : " + postMapper.findAll().size() + "개입니다.");
     }
+//    create table TB_POST
+//    (
+//      ID            NUMBER(20) not null,
+//      TITLE         VARCHAR2(100),
+//      CONTENT       VARCHAR2(3000),
+//      WRITER        VARCHAR2(20),
+//      VIEW_CNT      NUMBER(11),
+//      NOTICE_YN     NUMBER(1),
+//      DELETE_YN     NUMBER(1),
+//      CREATED_DATE  DATE,
+//      MODIFIED_DATE DATE
+//    )
+//    create table TB_COMMENT
+//    (
+//      ID            NUMBER,
+//      POST_ID       NUMBER,
+//      CONTENT       VARCHAR2(1000),
+//      WRITER        VARCHAR2(20),
+//      DELETE_YN     NUMBER,
+//      CREATED_DATE  DATE,
+//      MODIFIED_DATE DATE
+//    )
+//    create sequence TB_POST_seq
+//       increment by 1
+//       start with 1
+//       maxvalue integer 999999
+//       minvalue integer 999999
+//       ;
+//    create sequence TB_comment_seq
+//       increment by 1
+//       start with 1
+//       maxvalue integer 999999
+//       minvalue integer 999999
+//       ;
 }
