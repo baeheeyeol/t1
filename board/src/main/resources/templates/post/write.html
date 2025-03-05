@@ -81,7 +81,16 @@
                 for (let i = 0, len = fields.length; i < len; i++) {
                     isValid(fields[i], fieldNames[i]);
                 }
-
+ 				let inputHtml = '';
+		        
+		        new URLSearchParams(location.search).forEach((value, key) => {
+		            inputHtml += `<input type="hidden" name="${key}" value="${value}" />`;
+		        })
+		        
+		        const doc = new DOMParser().parseFromString(inputHtml, 'text/html');
+		        
+		        form.insertAdjacentHTML("afterbegin",inputHtml);
+		        
                 document.getElementById('saveBtn').disabled = true;
                 form.noticeYn.value = form.isNotice.checked;
                 form.action = [[ ${post == null} ]] ? '/post/save.do' : '/post/update.do';
@@ -115,22 +124,6 @@
         document.getElementById('createdDate').value = dayjs().format('YYYY-MM-DD');
     }
 
-
-    // 게시글 저장(수정)
-    function savePost() {
-        const form = document.getElementById('saveForm');
-        const fields = [form.title, form.writer, form.content];
-        const fieldNames = ['제목', '이름', '내용'];
-
-        for (let i = 0, len = fields.length; i < len; i++) {
-            isValid(fields[i], fieldNames[i]);
-        }
-
-        document.getElementById('saveBtn').disabled = true;
-        form.noticeYn.value = form.isNotice.checked;
-        form.action = [[ ${post == null} ]] ? '/post/save.do' : '/post/update.do';
-        form.submit();
-    }
         </script>
     </th:block>
 </html>
