@@ -13,7 +13,21 @@
         , created_date
         , modified_date
     </sql>
-
+    <!-- 페이징 처리 -->
+    <sql id ="pageFront">
+    SELECT 
+    	* 
+    FROM (SELECT T.*
+    		   , ROWNUM AS RN 
+		  FROM(
+	
+    </sql>
+    <sql id ="pageEnd">
+    <![CDATA[ 
+    	         )t
+    	   )where rn >= #{rowStart} and rn <= #{rowEnd} 
+    	   ]]>
+    </sql>
 
     <!-- 댓글 저장 -->
     <insert id="save" parameterType="com.study.domain.comment.CommentRequest">
@@ -67,17 +81,31 @@
     </delete>
 
 
-    <!-- 댓글 리스트 조회 -->
-    <select id="findAll" parameterType="long" resultType="com.study.domain.comment.CommentResponse">
+       <!-- 댓글 리스트 조회 -->
+    <select id="findAll" parameterType="com.study.domain.comment.CommentSearchDto" resultType="com.study.domain.comment.CommentResponse">
+          <include refid="pageFront" />
         SELECT
             <include refid="commentColumns" />
         FROM
             tb_comment
         WHERE
             delete_yn = 0
-            AND post_id = #{value}
+            AND post_id = #{postId}
         ORDER BY
             id DESC
+              <include refid="pageEnd" />
+    </select>
+    
+    
+    <!-- 댓글 수 카운팅 -->
+    <select id="count" parameterType="com.study.domain.comment.CommentSearchDto" resultType="int">
+        SELECT
+            COUNT(*)
+        FROM
+            tb_comment
+        WHERE
+            delete_yn = 0
+            AND post_id = #{postId}
     </select>
 
 </mapper>

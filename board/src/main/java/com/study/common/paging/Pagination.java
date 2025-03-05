@@ -17,9 +17,10 @@ public class Pagination {
         if (totalRecordCount > 0) {
             this.totalRecordCount = totalRecordCount;
             calculation(params);
+            params.setPagination(this);
         }
     }
-
+    
     private void calculation(SearchDto params) {
 
         // 전체 페이지 수 계산

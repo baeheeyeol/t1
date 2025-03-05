@@ -1,5 +1,9 @@
 package com.study;
 
+import com.study.domain.comment.CommentRequest;
+
+import com.study.domain.comment.CommentService;
+import com.study.domain.comment.CommentRequest;
 import com.study.domain.post.PostRequest;
 import com.study.domain.post.PostService;
 import org.junit.jupiter.api.Test;
@@ -11,6 +15,9 @@ public class PostServiceTest {
 
     @Autowired
     PostService postService;
+    
+    @Autowired
+    CommentService commentService;
 
     @Test
     void save() {
