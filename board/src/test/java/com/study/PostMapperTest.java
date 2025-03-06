@@ -93,13 +93,31 @@ public class PostMapperTest {
 //    create sequence TB_POST_seq
 //       increment by 1
 //       start with 1
-//       maxvalue integer 999999
-//       minvalue integer 999999
+//       maxvalue 999999
+//       minvalue 1
 //       ;
 //    create sequence TB_comment_seq
 //       increment by 1
 //       start with 1
-//       maxvalue integer 999999
-//       minvalue integer 999999
+//       maxvalue 999999
+//       minvalue 1
 //       ;
+//    create table TB_MEMBER
+//    (
+//      ID            NUMBER,
+//      LOGIN_ID      VARCHAR2(20),
+//      PASSWORD      VARCHAR2(60),
+//      NAME          VARCHAR2(20),
+//      GENDER        VARCHAR2(2),
+//      BIRTHDAY      DATE,
+//      DELETE_YN     NUMBER,
+//      CREATED_DATE  DATE,
+//      MODIFIED_DATE DATE
+//    )
+//  create sequence TB_MEMBER_seq
+//  increment by 1
+//  start with 1
+//  maxvalue 999999
+//  minvalue 1
+//  ;
 }

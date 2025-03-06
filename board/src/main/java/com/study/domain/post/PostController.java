@@ -71,6 +71,7 @@ public class PostController {
         MessageDto message = new MessageDto("게시글 삭제가 완료되었습니다.", "/post/list.do", RequestMethod.GET, queryParamsToMap(queryParams));
         return showMessageAndRedirect(message, model);
     }
+    
     private Map<String, Object> queryParamsToMap(final SearchDto queryParams) {
         Map<String, Object> data = new HashMap<>();
         data.put("page", queryParams.getPage());

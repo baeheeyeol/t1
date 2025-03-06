@@ -20,7 +20,6 @@ import com.study.common.paging.PagingResponse;
 public class CommentApiController {
 
     private final CommentService commentService;
-
     // 신규 댓글 생성
     @PostMapping("/posts/{postId}/comments")
     public CommentResponse saveComment(@PathVariable(value="postId") final Long postId, @RequestBody final CommentRequest params) {

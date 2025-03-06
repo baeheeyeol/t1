@@ -96,6 +96,7 @@
     <th:block layout:fragment="script">
         <script th:inline="javascript">
         /*<![CDATA[*/
+		  let currentPostPage // list.html 에서 접속할때 page 번호
 		    // 게시글 수정 페이지로 이동
 		    function goWritePage() {
 		        location.href = '/post/write.do' + location.search;
@@ -108,7 +109,6 @@
 		        queryString.delete('id');
 		        location.href = '/post/list.do' + '?' + queryString.toString();
 		    }
-		    
 		    // 게시글 삭제
 		    function deletePost() {
 		        
@@ -137,7 +137,7 @@
 		    }
 		    
 		  // 댓글 
-		  let currentPostPage
+		  
         	    window.onload = () => {
         	    	currentPostPage = new URLSearchParams(location.search).get('page');
         	    	currentPostPage = currentPostPage == null ? 1 : currentPostPage;
