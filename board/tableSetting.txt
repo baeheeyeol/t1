@@ -50,3 +50,18 @@
   maxvalue 999999
   minvalue 1
   ;
+    create sequence TB_file_seq
+  increment by 1
+  start with 1
+  maxvalue 999999
+  minvalue 1;
+  CREATE TABLE tb_file(
+  ID NUMBER,
+  post_id NUMBER,
+  original_name VARCHAR2(255),
+  save_name VARCHAR2(40),
+  tb_SIZE NUMBER,
+  delete_yn NUMBER,
+  created_date DATE,
+  deleted_date DATE
+  );
