@@ -1,8 +1,10 @@
 package com.study.common.file;
 
 import com.study.domain.file.FileRequest;
+import com.study.domain.file.FileResponse;
 
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -105,5 +107,38 @@ public class FileUtils {
         }
         return dir.getPath();
     }
+    /**
+     * 파일 삭제 (from Disk)
+     * @param files - 삭제할 파일 정보 List
+     */
+    public void deleteFiles(final List<FileResponse> files) {
+        if (CollectionUtils.isEmpty(files)) {
+            return;
+        }
+        for (FileResponse file : files) {
+            String uploadedDate = file.getCreatedDate().toLocalDate().format(DateTimeFormatter.ofPattern("yyMMdd"));
+            deleteFile(uploadedDate, file.getSaveName());
+        }
+    }
 
+    /**
+     * 파일 삭제 (from Disk)
+     * @param addPath - 추가 경로
+     * @param filename - 파일명
+     */
+    private void deleteFile(final String addPath, final String filename) {
+        String filePath = Paths.get(uploadPath, addPath, filename).toString();
+        deleteFile(filePath);
+    }
+
+    /**
+     * 파일 삭제 (from Disk)
+     * @param filePath - 파일 경로
+     */
+    private void deleteFile(final String filePath) {
+        File file = new File(filePath);
+        if (file.exists()) {
+            file.delete();
+        }
+    }
 }

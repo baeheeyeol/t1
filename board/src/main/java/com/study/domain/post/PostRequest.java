@@ -17,5 +17,5 @@ public class PostRequest {
     private String writer;                                    // 작성자
     private Boolean noticeYn;                                 // 공지글 여부
     private List<MultipartFile> files = new ArrayList<>();    // 첨부파일 List
-
+    private List<Long> removeFileIds = new ArrayList<>(); // 삭제할 첨부파일 id List
 }
