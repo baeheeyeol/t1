@@ -1,6 +1,7 @@
 package com.study.config;
 
 import com.zaxxer.hikari.HikariConfig;
+
 import com.zaxxer.hikari.HikariDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -20,6 +21,8 @@ public class DatabaseConfig {
 
     @Autowired
     private ApplicationContext context;
+    @Autowired
+    private ApplicationContext context1;
 
     @Bean
     @ConfigurationProperties(prefix = "spring.datasource.hikari")
