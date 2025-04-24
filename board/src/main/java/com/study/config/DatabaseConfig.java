@@ -22,7 +22,7 @@ public class DatabaseConfig {
     @Autowired
     private ApplicationContext context;
     @Autowired
-    private ApplicationContext context1;
+    private ApplicationContext context2;
 
     @Bean
     @ConfigurationProperties(prefix = "spring.datasource.hikari")
